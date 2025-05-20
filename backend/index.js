@@ -22,9 +22,10 @@ const express = require('express');
   // Create an HTTP server
   const io = new Server(server, {
     cors: {
-      origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Frontend URL
+       origin: 'https://paanihub2025-j19o.vercel.app', // ✅ Your frontend domain // Frontend URL
       methods: ['GET', 'POST'],
       credentials: true
+      
     }
   });
 
