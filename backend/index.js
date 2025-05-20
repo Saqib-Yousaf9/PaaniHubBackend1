@@ -22,15 +22,14 @@ const express = require('express');
   // Create an HTTP server
   const io = new Server(server, {
     cors: {
-       origin: 'https://paanihub2025-j19o.vercel.app', // ✅ Your frontend domain // Frontend URL
+      origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Frontend URL
       methods: ['GET', 'POST'],
       credentials: true
-      
     }
   });
 
   // Connect to MongoDB
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Project')
+  mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -58,7 +57,7 @@ const express = require('express');
       sameSite: true
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/Project'
+      mongoUrl: process.env.MONGO_URI
     })
   }));
 
