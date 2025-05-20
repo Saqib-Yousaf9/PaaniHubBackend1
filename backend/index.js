@@ -40,7 +40,7 @@ const express = require('express');
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   }));
-console.log('Loaded MONGO_URI:', process.env.MONGO_URI);
+
   // Middleware to parse incoming request bodies
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
@@ -219,3 +219,6 @@ app.use('/api/requests', ordersRouter);
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+
+console.log('Loaded MONGO_URI:', process.env.MONGO_URI);
+
